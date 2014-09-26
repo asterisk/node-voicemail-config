@@ -1,0 +1,32 @@
+{
+  "db": {
+    "connectionString": "postgres://user:secret@database"
+  },
+
+  "ari": {
+    "url": "http://localhost:8088",
+    "username": "user",
+    "passworde": "password",
+    "applicationName": "test"
+  },
+
+  "prompts": {
+    "intro": [{
+      "sound": "sound:one",
+      "skipable": true,
+      "postSilence": 1 
+    }, {
+      "sound": "sound:two",
+      "skipable": true,
+      "postSilence": 1 
+    }]
+  },
+
+  "inputs": {
+    "#": "confirm"
+  },
+
+  "mailbox": {
+    "min_sec": "10"
+  }
+}
