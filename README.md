@@ -20,6 +20,22 @@ or add the following the your package.json file
 
 # Usage
 
+```JavaScript
+var config = require('voicemail-config');
+var mailbox; // mailbox instance
+var context; // context instance
+
+var appConfig = config.getAppConfig();
+config.getMailboxConfig(mailbox, context)
+  .then(function(mailboxConfig) {
+    // use mailbox config
+  });
+```
+
+appConfig will be an application config object loaded using the parent module's config.json file. It can be used anywhere from a voicemail or voicemail main application to return a parent application config.
+
+mailboxConfig will consist of application level defaults, which can be overridden by the context's configuration or the mailbox's configuration. This allows minimal configuration which can be modified by applying an override to either an entire context or a specific mailbox.
+
 # Development
 
 After cloning the git repository, run the following to install the module and all dev dependencies:
