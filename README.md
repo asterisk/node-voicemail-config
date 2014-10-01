@@ -21,7 +21,8 @@ or add the following the your package.json file
 # Usage
 
 ```JavaScript
-var config = require('voicemail-config');
+var dal; // voicemail data access layer instance
+var config = require('voicemail-config')(dal);
 var mailbox; // mailbox instance
 var context; // context instance
 
@@ -31,6 +32,10 @@ config.getMailboxConfig(mailbox, context)
     // use mailbox config
   });
 ```
+
+For more details on the data access layer, see [voicemail-data](http://github.com/asterisk/node-voicemail-data).
+
+voicemail-config expects a config.json file in the root of the application. An example file can be found at the root of this package.
 
 appConfig will be an application config object loaded using the parent module's config.json file. It can be used anywhere from a voicemail or voicemail main application to return a parent application config.
 

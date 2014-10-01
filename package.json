@@ -1,6 +1,6 @@
 {
   "name": "voicemail-config",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Configuration interface for Asterisk voicemail.",
   "main": "lib/config.js",
   "private": true,
@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/asterisk/node-voicemail-config",
   "dependencies": {
-    "q": "^1.0.1",
-    "voicemail-data": "git://github.com/asterisk/node-voicemail-data"
+    "q": "^1.0.1"
   },
   "devDependencies": {
     "mocha": "^1.21.4",

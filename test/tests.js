@@ -13,19 +13,12 @@
 'use strict';
 
 var Q = require('q');
-var mockery = require('mockery');
 var assert = require('assert');
-
-var mockeryOpts = {
-  warnOnReplace: false,
-  warnOnUnregistered: false,
-  useCleanCache: true
-};
 
 describe('config', function() {
 
   it('should support loading application config', function(done) {
-    var config = require('../lib/config.js');
+    var config = require('../lib/config.js')({});
     var appConfig = config.getAppConfig();
 
     assert(appConfig.db.connectionString === 'postgres://user:secret@database');
@@ -37,38 +30,35 @@ describe('config', function() {
   });
 
   it('should support loading mailbox config', function(done) {
-    mockery.enable(mockeryOpts);
-    mockery.registerMock('voicemail-data', function(connectionString) {
-      return {
-        contextConfig: {
-          all: function() {
-            /*jshint newcap:false*/
-            var promise = Q();
+    var mockDal = {
+      contextConfig: {
+        all: function() {
+          /*jshint newcap:false*/
+          var promise = Q();
 
-            return promise.then(function() {
-              return [{
-                key: 'max_sec',
-                value: '20'
-              }, {
-                key: 'max_messages',
-                value: '50'}
-              ];
-            });
-          }
-        },
-        mailboxConfig: {
-          all: function() {
-            /*jshint newcap:false*/
-            var promise = Q();
-
-            return promise.then(function() {
-              return [{key: 'max_messages', value: '100'}];
-            });
-          }
+          return promise.then(function() {
+            return [{
+              key: 'max_sec',
+              value: '20'
+            }, {
+              key: 'max_messages',
+              value: '50'}
+            ];
+          });
         }
-      };
-    });
-    var config = require('../lib/config.js');
+      },
+      mailboxConfig: {
+        all: function() {
+          /*jshint newcap:false*/
+          var promise = Q();
+
+          return promise.then(function() {
+            return [{key: 'max_messages', value: '100'}];
+          });
+        }
+      }
+    };
+    var config = require('../lib/config.js')(mockDal);
 
     config.getMailboxConfig()
       .then(function(mailboxConfig) {
@@ -77,7 +67,6 @@ describe('config', function() {
         assert(mailboxConfig['max_sec'] === '20');
         assert(mailboxConfig['max_messages'] === '100');
 
-        mockery.disable();
         done();
       })
       .done();

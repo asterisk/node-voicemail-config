@@ -1,6 +1,7 @@
 {
   "db": {
-    "connectionString": "postgres://user:secret@database"
+    "connectionString": "postgres://user:secret@database",
+    "provider": "postgres"
   },
 
   "ari": {
