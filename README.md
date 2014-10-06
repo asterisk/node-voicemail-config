@@ -24,10 +24,9 @@ or add the following the your package.json file
 var dal; // voicemail data access layer instance
 var config = require('voicemail-config')(dal);
 var mailbox; // mailbox instance
-var context; // context instance
 
 var appConfig = config.getAppConfig();
-config.getMailboxConfig(mailbox, context)
+config.getMailboxConfig(mailbox)
   .then(function(mailboxConfig) {
     // use mailbox config
   });

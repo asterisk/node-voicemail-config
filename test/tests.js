@@ -24,7 +24,7 @@ describe('config', function() {
     assert(appConfig.db.connectionString === 'postgres://user:secret@database');
     assert(appConfig.ari.url === 'http://localhost:8088');
     assert(appConfig.ari.applicationName === 'test');
-    assert(appConfig.prompts.intro[0].sound === 'sound:one');
+    assert(appConfig.prompts.mailboxWriter.intro[0].sound === 'sound:one');
 
     done();
   });
@@ -59,8 +59,13 @@ describe('config', function() {
       }
     };
     var config = require('../lib/config.js')(mockDal);
+    var mailbox = {
+      getContext: function() {
+        return {};
+      }
+    };
 
-    config.getMailboxConfig()
+    config.getMailboxConfig(mailbox)
       .then(function(mailboxConfig) {
         
         assert(mailboxConfig['min_sec'] === '10');

@@ -12,15 +12,17 @@
   },
 
   "prompts": {
-    "intro": [{
-      "sound": "sound:one",
-      "skipable": true,
-      "postSilence": 1 
-    }, {
-      "sound": "sound:two",
-      "skipable": true,
-      "postSilence": 1 
-    }]
+    "mailboxWriter": {
+      "intro": [{
+        "sound": "sound:one",
+        "skipable": true,
+        "postSilence": 1 
+      }, {
+        "sound": "sound:two",
+        "skipable": true,
+        "postSilence": 1 
+      }]
+    }
   },
 
   "inputs": {
@@ -28,6 +30,7 @@
   },
 
   "mailbox": {
+    "msg_format": "wave",
     "min_sec": "10"
   }
 }
