@@ -13,24 +13,48 @@
 
   "prompts": {
     "mailboxWriter": {
-      "intro": [{
-        "sound": "sound:one",
-        "skipable": true,
-        "postSilence": 1 
+      "greeting": [{
+        "sound": "sound:vm-theperson",
+        "skipable": false,
+        "postSilence": 1
       }, {
-        "sound": "sound:two",
+        "sound": "characters:{extension}",
+        "skipable": false,
+        "postSilence": 1
+      }, {
+        "sound": "sound:{status}",
+        "skipable": false,
+        "postSilence": 0
+      }],
+
+      "intro": [{
+        "sound": "sound:vm-intro",
         "skipable": true,
-        "postSilence": 1 
+        "postSilence": 1
+      }, {
+        "sound": "sound:beep",
+        "skipable": true,
+        "postSilence": 0
+      }],
+
+      "goodbye": [{
+        "sound": "sound:vm-goodbye",
+        "skipable": false,
+        "postSilence": 0
       }]
     }
   },
 
   "inputs": {
-    "#": "confirm"
+    "mailboxWriter": {
+      "ready": {
+        "#": "stop"
+      }
+    }
   },
 
   "mailbox": {
-    "msg_format": "wave",
+    "msg_format": "wav",
     "min_sec": "10"
   }
 }
