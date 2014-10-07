@@ -7,7 +7,7 @@
   "ari": {
     "url": "http://localhost:8088",
     "username": "user",
-    "passworde": "password",
+    "password": "password",
     "applicationName": "test"
   },
 
