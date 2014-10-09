@@ -16,15 +16,15 @@
       "greeting": [{
         "sound": "sound:vm-theperson",
         "skipable": false,
-        "postSilence": 1
+        "postSilence": 0
       }, {
         "sound": "characters:{extension}",
         "skipable": false,
-        "postSilence": 1
+        "postSilence": 0
       }, {
         "sound": "sound:{status}",
         "skipable": false,
-        "postSilence": 0
+        "postSilence": 1
       }],
 
       "intro": [{
