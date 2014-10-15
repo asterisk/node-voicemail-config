@@ -54,6 +54,10 @@
         "skipable": true,
         "postSilence": 0
       }, {
+        "sound": "sound:{folder}",
+        "skipable": true,
+        "postSilence": 0
+      }, {
         "sound": "sound:message{plural}",
         "skipable": true,
         "postSilence": 0
@@ -61,6 +65,10 @@
 
       "introNoMessages": [{
         "sound": "sound:vm-no",
+        "skipable": true,
+        "postSilence": 0
+      }, {
+        "sound": "sound:{folder}",
         "skipable": true,
         "postSilence": 0
       }, {
