@@ -54,11 +54,11 @@
         "skipable": true,
         "postSilence": 0
       }, {
-        "sound": "sound:{folder}",
+        "sound": "{folder}",
         "skipable": true,
         "postSilence": 0
       }, {
-        "sound": "sound:message{plural}",
+        "sound": "sound:vm-message{plural}",
         "skipable": true,
         "postSilence": 0
       }],
@@ -68,16 +68,30 @@
         "skipable": true,
         "postSilence": 0
       }, {
-        "sound": "sound:{folder}",
+        "sound": "{folder}",
         "skipable": true,
         "postSilence": 0
       }, {
-        "sound": "sound:vm_messages",
+        "sound": "sound:vm-messages",
         "skipable": true,
         "postSilence": 0
       }],
 
-      "messageInfo": [{
+      "messageInfoPre": [{
+        "sound": "{order}",
+        "skipable": true,
+        "postSilence": 0
+      }, {
+        "sound": "sound:vm-message",
+        "skipable": true,
+        "postSilence": 0
+      }],
+
+      "messageInfoPost": [{
+        "sound": "sound:vm-message",
+        "skipable": true,
+        "postSilence": 0
+      }, {
         "sound": "{order}",
         "skipable": true,
         "postSilence": 0
@@ -108,7 +122,7 @@
         "skipable": true,
         "postSilence": 0
       },{
-        "sound": "sound:vm-{folder}",
+        "sound": "{folder}",
         "skipable": true,
         "postSilence": 0
       }, {
