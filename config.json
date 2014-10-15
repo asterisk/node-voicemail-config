@@ -148,6 +148,16 @@
       "ready": {
         "#": "stop"
       }
+    },
+
+    "mailboxReader": {
+      "ready": {
+        "1": "first",
+        "4": "prev",
+        "5": "replay",
+        "6": "next",
+        "7": "delete"
+      }
     }
   },
 
