@@ -24,7 +24,7 @@ describe('config', function() {
     assert(appConfig.db.connectionString === 'postgres://user:secret@database');
     assert(appConfig.ari.url === 'http://localhost:8088');
     assert(appConfig.ari.applicationName === 'test');
-    assert(appConfig.prompts.mailboxWriter.intro[0].sound === 'sound:one');
+    assert(appConfig.prompts.mailboxWriter.intro[0].sound === 'sound:vm-intro');
 
     done();
   });
