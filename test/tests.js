@@ -15,10 +15,68 @@
 var Q = require('q');
 var assert = require('assert');
 
+/**
+ * Returns a mock dal for testing.
+ */
+var getMockDal = function() {
+  return {
+    contextConfig: {
+      all: function() {
+        /*jshint newcap:false*/
+        var promise = Q();
+
+        return promise.then(function() {
+          return [{
+            key: 'max_sec',
+            value: '20'
+          }, {
+            key: 'max_messages',
+            value: '50'}
+          ];
+        });
+      }
+    },
+    mailboxConfig: {
+      all: function() {
+        /*jshint newcap:false*/
+        var promise = Q();
+
+        return promise.then(function() {
+          return [{key: 'max_messages', value: '100'}];
+        });
+      }
+    }
+  };
+};
+
+/**
+ * Returns a mock logger for testing.
+ */
+var getMockLogger = function() {
+  return {
+    child: function() {
+      return {
+        trace: function() {},
+        debug: function() {},
+        info: function() {},
+        warn: function() {},
+        error: function() {},
+        fatal: function() {},
+        child: function() {
+          return this;
+        }
+      };
+    }
+  };
+};
+
 describe('config', function() {
 
   it('should support loading application config', function(done) {
-    var config = require('../lib/config.js')({});
+    var config = require('../lib/config.js')({
+      dal: getMockDal(),
+      logger: getMockLogger()
+    });
     var appConfig = config.getAppConfig();
 
     assert(appConfig.db.connectionString === 'postgres://user:secret@database');
@@ -30,35 +88,10 @@ describe('config', function() {
   });
 
   it('should support loading mailbox config', function(done) {
-    var mockDal = {
-      contextConfig: {
-        all: function() {
-          /*jshint newcap:false*/
-          var promise = Q();
-
-          return promise.then(function() {
-            return [{
-              key: 'max_sec',
-              value: '20'
-            }, {
-              key: 'max_messages',
-              value: '50'}
-            ];
-          });
-        }
-      },
-      mailboxConfig: {
-        all: function() {
-          /*jshint newcap:false*/
-          var promise = Q();
-
-          return promise.then(function() {
-            return [{key: 'max_messages', value: '100'}];
-          });
-        }
-      }
-    };
-    var config = require('../lib/config.js')(mockDal);
+    var config = require('../lib/config.js')({
+      dal: getMockDal(),
+      logger: getMockLogger()
+    });
     var mailbox = {
       getContext: function() {
         return {};

@@ -21,8 +21,11 @@ or add the following the your package.json file
 # Usage
 
 ```JavaScript
-var dal; // voicemail data access layer instance
-var config = require('voicemail-config')(dal);
+var dependencies = {
+  dal: dal, // voicemail data access layer
+  logger: logger // voicemail logging
+};
+var config = require('voicemail-config')(dependencies);
 var mailbox; // mailbox instance
 
 var appConfig = config.getAppConfig();
